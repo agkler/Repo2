@@ -2,7 +2,7 @@ package Cuenta;
 
 public class Cuenta {
 
-	private Double saldo;
+	protected Double saldo;
 
 	
 	public Cuenta() {
@@ -13,17 +13,18 @@ public class Cuenta {
 		return this.saldo;
 	}
 
-	public Boolean depositar(Double monto) {
-		this.saldo= this.saldo + monto;
-		return true;
+	public void depositar(Double monto) {
+		this.saldo+= monto;
+		
+	}
+
+	public Boolean extraer(Double monto) {
+		if(monto<=saldo) {
+			this.saldo-= monto;
+			return true;
+		}
+		return false;
 	}
 	
-	public Boolean extraer(Double monto) {
-		if(monto<=this.saldo) {
-			this.saldo= this.saldo - monto;
-			return true;
-		
-		}
-		return false;	
-	}
+	
 }
