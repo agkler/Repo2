@@ -1,7 +1,10 @@
 package Cuenta;
 
 public class Cuenta {
-
+	private Integer numero;
+	private String apellidoTitular;
+	private String nombreTitular;
+	
 	protected Double saldo;
 
 	
@@ -13,8 +16,9 @@ public class Cuenta {
 		return this.saldo;
 	}
 
-	public void depositar(Double monto) {
+	public Boolean depositar(Double monto) {
 		this.saldo+= monto;
+		return true;
 		
 	}
 
@@ -24,6 +28,30 @@ public class Cuenta {
 			return true;
 		}
 		return false;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	public String getApellidoTitular() {
+		return apellidoTitular;
+	}
+
+	public void setApellidoTitular(String apellidoTitular) {
+		this.apellidoTitular = apellidoTitular;
+	}
+
+	public String getNombreTitular() {
+		return nombreTitular;
+	}
+
+	public void setNombreTitular(String nombreTitular) {
+		this.nombreTitular = nombreTitular;
 	}
 	
 	

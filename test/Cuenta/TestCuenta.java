@@ -265,18 +265,37 @@ class TestCuenta {
 	@Test
 	public void queSePuedaExtraerDeUnaCuentaCorrienteoUnImporteIgualAlSaldoMasElDescubierto() {
 		CuentaCorriente nuevaCuentaCorriente= new CuentaCorriente();
-		nuevaCuentaCorriente.depositar(1500.0);
-		nuevaCuentaCorriente.extraer(1600.0);
+		Double importeADepositar= 1500.0;
+		Double importeAExtraer= 1600.0;
 		
-		Double montoEsperado= -100.0;
+		Double montoEsperado= 0.0;
+		Double descubiertoActualEsperado= importeAExtraer - importeADepositar;
+		
+		nuevaCuentaCorriente.depositar(importeADepositar);
+		nuevaCuentaCorriente.extraer(importeAExtraer);
+		
 		
 		assertEquals(montoEsperado, nuevaCuentaCorriente.getSaldo());
+		assertEquals(descubiertoActualEsperado, nuevaCuentaCorriente.getDescubiertoActual());
 
 
 	}
 
 	@Test
 	public void queNoSePuedaExtraerDeUnaCuentaCorrienteUnImporteMayorAlSaldoMasElDescubierto() {
+		CuentaCorriente nuevaCuentaCorriente= new CuentaCorriente();
+		Double importeADepositar= 1500.0;
+		Double importeAExtraer= 1700.0;
+		
+		Double montoEsperado= 1500.0;
+		Double descubiertoActualEsperado= 0.0;
+		
+		nuevaCuentaCorriente.depositar(importeADepositar);
+		nuevaCuentaCorriente.extraer(importeAExtraer);
+		
+		
+		assertEquals(montoEsperado, nuevaCuentaCorriente.getSaldo());
+		assertEquals(descubiertoActualEsperado, nuevaCuentaCorriente.getDescubiertoActual());
 
 
 
@@ -284,6 +303,19 @@ class TestCuenta {
 
 	@Test
 	public void queSeCobreCincoPorcientoDeComisionAlDepositarDineroLuegoDeHaberRealizadoUnaExtraccionMayorAlSaldo() {
+		CuentaCorriente nuevaCuentaCorriente= new CuentaCorriente();
+		Double importeAExtraer= 100.0;
+		Double importeADepositar= 200.0;
+		
+		Double montoEsperado= 95.0;
+		
+		
+		nuevaCuentaCorriente.extraer(importeAExtraer);
+		nuevaCuentaCorriente.depositar(importeADepositar);
+		
+		
+		assertEquals(montoEsperado, nuevaCuentaCorriente.getSaldo());
+		
 
 
 

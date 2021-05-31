@@ -28,10 +28,12 @@ public class CajaDeAhorro extends Cuenta {
 				return true;
 			}
 			
-		} else if (cantidadDeExtracciones >= 5) {
-				this.saldo = super.saldo - (monto + CONCEPTO_ADICIONAL);
+		} else {
+			if(monto <= (super.saldo+CONCEPTO_ADICIONAL)){
+				this.saldo = super.saldo - monto - CONCEPTO_ADICIONAL;
 				cantidadDeExtracciones++;
 				return true;
+			}
 		}
 		return false;
 	}
